@@ -1,0 +1,511 @@
+# SkRxx | FlowDocument
+
+Data Type:
+Skill Rule / Semantic Document to Flow Document / Preparation Document for
+Bubble Chart and Prompt Document
+
+
+## 1. Header
+
+### Context
+
+Flow Document คือเอกสารกลางที่ใช้แปลง Semantic Document ให้กลายเป็น
+workflow-ready document เพื่อเตรียมข้อมูลสำหรับทำ Bubble Chart แบบ SMMX
+และ Prompt Document
+
+Flow Document ไม่ใช่ Bubble Chart Skill และไม่ใช่เอกสารกำหนด style
+ของ Bubble Chart โดยตรง แต่ต้องจัดข้อมูลให้ครบพอที่ BubbleSMMX Skill
+และ Prompt Document Skill จะนำไปใช้ต่อได้
+
+### Purpose
+
+จัดระเบียบข้อมูลจาก Semantic Document ให้เห็นความสัมพันธ์แบบ workflow:
+Component ทำงานด้วย Principle / Method เพื่อสร้าง Process Result
+และนำไปสู่ Final Result
+
+### Scope
+
+ใช้เมื่อผู้ใช้สั่งให้แปลง Semantic Document เป็น Flow Document
+หรือเมื่อต้องเตรียมเอกสารก่อนทำ Bubble Chart / SMMX / Prompt Document
+
+### Final Result
+
+ได้ไฟล์ Flow Document ที่มีโครงสร้างครบ:
+Main Topic, Component, Principle, Method, Process Result, Final Result,
+Branch, Constraints, Note Content, Gap / Need Confirm, Prompt Readiness
+และ Operation Workflow ที่มีทั้ง human-readable workflow และ
+machine-readable Node Link Structure
+
+
+## 2. Components
+
+### Semantic Document
+
+- เป็น input หลัก
+- ต้องมีข้อมูลตามมาตรฐาน SKR00 / MEM00
+- ต้องมี Context, Components, Logic, Workflow หรือ Result
+- โดยปกติ Semantic Document ของระบบเราต้องมี Final Result อยู่แล้ว
+
+### Flow Document
+
+- เป็น output ของสกิลนี้
+- ใช้เตรียมข้อมูลให้พร้อมสำหรับ Bubble Chart และ Prompt Document
+- ต้องเขียนในรูปแบบอ่านง่าย กระชับ และเป็น workflow
+
+### Final Result
+
+- เป็นจุดตั้งต้นในการคิดย้อนกลับ
+- ใช้ถามว่า “ก่อนจะได้ผลลัพธ์สุดท้าย ต้องมี Process Result อะไรเกิดขึ้นก่อน”
+- เป็นตัวกำหนด direction ของ workflow
+
+### Process Result
+
+- ผลลัพธ์กลางที่เกิดจาก Component หรือ Method ก่อนหน้า
+- ต้องเป็นสิ่งที่ถูกใช้ต่อโดย Component ถัดไป
+- เป็นตัวเชื่อม causal link ระหว่าง Component กับ Final Result
+
+### Component
+
+- คน / AI / module / tool / resource / system / mechanism
+  ที่ทำให้เกิด Process Result
+- ต้องเป็น workflow-active component เท่านั้น
+- Component ที่ไม่ใช่ส่วนของ workflow หลักให้ใส่ใน Note ของ component
+  ที่เกี่ยวข้อง
+
+### Principle
+
+- หน้าที่หรือหลักการของ Component
+- อธิบายว่า Component นั้นมีบทบาทอะไรใน workflow
+- Principle ควรชัด แต่ไม่ยาวเกินจำเป็น
+
+### Method
+
+- วิธีที่ Component ใช้เพื่อสร้าง Process Result
+- Method เป็นรายละเอียดของ Principle
+- Method ควรอยู่ใน Note ไม่ใช่ main flow
+
+### Note Content
+
+- ใช้เก็บ Principle, Method, Parameter, Constraint, Condition,
+  Missing, Need Confirm, Prompt Readiness
+- ใช้เก็บรายละเอียดที่จำเป็น แต่ไม่ควรทำให้ workflow หลักรก
+
+### Branch
+
+- ใช้เมื่อ Process Result หรือ Component หนึ่งทำให้เกิดหลายผลลัพธ์
+- Branch ต้องออกจากจุดที่เป็นสาเหตุจริง
+- ห้ามสร้าง branch แบบ category ถ้าไม่ใช่ workflow จริง
+
+### Constraints
+
+- ข้อจำกัด กฎ ความเสี่ยง หรือเงื่อนไขที่ควบคุม workflow
+- ไม่ควรเป็น main flow ยกเว้นเป็น active workflow gate จริง
+- ส่วนใหญ่ควรอยู่ใน Note ของ Main Topic หรือ Component ที่เกี่ยวข้อง
+
+### Operation Workflow Structure
+
+- เป็นส่วนย่อยใน Operations Workflow
+- มี 2 ชั้น:
+  1. Human-readable Flow Chain
+  2. Machine-readable Node Link Structure
+- ใช้ให้ทั้ง AI, ผู้ใช้, Prompt Document และ BubbleSMMX Tool อ่านได้ตรงกัน
+
+
+## 3. Logic
+
+- IF user asks to convert Semantic Document to Flow Document
+  THEN use this skill
+
+- IF Semantic Document has Final Result
+  THEN start analysis from Final Result and reverse-map backward
+
+- IF a detail causes an intermediate usable result
+  THEN classify it as Process Result
+
+- IF an entity creates or controls Process Result
+  THEN classify it as Component
+
+- IF a Component has a function or role
+  THEN write it as Principle
+
+- IF a Component has a practical execution method
+  THEN write it as Method and place it in Note
+
+- IF information is important but not part of the main workflow
+  THEN place it in Note under the related Component or Main Topic
+
+- IF a Constraint controls the whole workflow
+  THEN place it in Main Topic Note
+
+- IF a Constraint controls one component
+  THEN place it in that Component Note
+
+- IF workflow creates more than one Final Result
+  THEN create branch from the correct Process Result or Component
+
+- IF output becomes only category headings such as Header / Components /
+  Rules / Purpose
+  THEN it is not a valid Flow Document
+
+- IF Flow Document will be used by BubbleSMMX Tool
+  THEN Operations Workflow must include Node Link Structure
+
+- IF a workflow has branch
+  THEN Node Link Structure must show source node, branch node,
+  branch group and branch condition
+
+- IF Node Link Structure conflicts with Human-readable Flow Chain
+  THEN Flow Document is not ready for BubbleSMMX or Prompt Document
+
+
+## 4. Workflow
+
+### Main Workflow
+
+1. Read Semantic Document.
+2. Identify Main Topic.
+3. Identify Final Result.
+4. Reverse-map from Final Result to required Process Results.
+5. Identify Components that create each Process Result.
+6. Attach Principle to each Component.
+7. Attach Method / Parameter / Constraint into Notes.
+8. Build forward workflow chain:
+   Component => Process Result => Component => Process Result => Final Result
+9. Add Branch only when workflow actually splits.
+10. Add Constraints into appropriate Notes.
+11. Add Gap / Missing / Need Confirm.
+12. Add Prompt Readiness.
+13. Add Operation Workflow Data Structure.
+14. Output as Flow Document file.
+
+### Operations Workflow Data Structure
+
+Purpose:
+ส่วนนี้ทำให้ Operation Workflow ใช้ได้ทั้งกับมนุษย์และ Tool
+โดยไม่เพิ่มหัวข้อใหญ่ใหม่ในเอกสาร
+
+### A. Human-readable Flow Chain
+
+Main flow:
+
+Component1
+(note: Principle, Method, Parameter, Constraint if any)
+=> ProcessResult1
+=> Component2
+(note: Principle, Method, Parameter, Constraint if any)
+=> ProcessResult2
+=> Component3
+(note: Principle, Method, Parameter, Constraint if any)
+=> FinalResult
+
+Branch flow:
+
+ProcessResult1
+=> BranchComponent
+(note: Principle, Method, Parameter, Constraint, Branch Condition)
+=> BranchResult
+=> BranchFinalResult or END
+
+Rule:
+- Human-readable Flow Chain ใช้สำหรับผู้ใช้และ Prompt Document
+- ต้องอ่านเป็นลำดับเหตุผลได้
+- ต้องไม่เป็น category map
+
+### B. Node Link Structure
+
+Purpose:
+Node Link Structure คือรูปแบบข้อมูลย่อยของ Operation Workflow
+สำหรับให้ Tool อ่านแล้วสร้าง BubbleSMMX ได้ทันที
+
+Node Link Structure Format:
+
+NodeID | NodeType | NodeName | NextNodeID | BranchGroup | NoteRef
+
+Required Fields:
+
+1. NodeID
+   - รหัส node เช่น N01, N02, N03
+   - ต้องไม่ซ้ำกัน
+   - ใช้เชื่อม node ใน workflow
+
+2. NodeType
+
+Allowed values:
+- MainTopic
+- Component
+- ProcessResult
+- BranchComponent
+- BranchResult
+- FinalResult
+
+3. NodeName
+   - ชื่อสั้นที่ใช้แสดงบน bubble
+   - โดยปกติใช้ชื่อ Component หรือ Result
+   - รายละเอียดชื่อเต็มให้ใส่ใน Note
+
+4. NextNodeID
+   - node ถัดไป
+   - ถ้าไม่มี node ถัดไปให้ใช้ END
+   - ถ้ามี branch ให้ใส่หลาย node คั่นด้วย comma เช่น N04,N06
+
+5. BranchGroup
+
+Allowed values:
+- main
+- fallback
+- option
+- error
+- review
+- parallel
+
+6. NoteRef
+   - อ้างถึง note ของ node นั้น
+   - note เก็บ Principle, Method, Parameter, Constraint,
+     Branch Condition, Missing, Need Confirm
+
+Example Node Link Structure:
+
+N01 | MainTopic | Low Cost Remote Access | N02 | main | Note-N01
+N02 | Component | User Workflow | N03 | main | Note-N02
+N03 | ProcessResult | Remote Need | N04 | main | Note-N03
+N04 | Component | Host PC | N05 | main | Note-N04
+N05 | ProcessResult | Power Ready | N06 | main | Note-N05
+N06 | Component | Secure Gateway | N07,N09 | main | Note-N06
+N07 | ProcessResult | Secure Access | N08 | main | Note-N07
+N08 | FinalResult | Low-Cost Secure Work | END | main | Note-N08
+N09 | BranchComponent | Fallback Access | N10 | fallback | Note-N09
+N10 | BranchResult | Alternative Access | END | fallback | Note-N10
+
+Branch Rule:
+- Branch ต้องออกจาก node ที่เป็นสาเหตุจริง
+- BranchGroup ต้องบอกชนิดของ branch
+- Branch condition ต้องอยู่ใน NoteRef
+- ห้ามสร้าง branch จากหัวข้อ category
+- ถ้า branch เป็นทางเลือกสำรอง ให้ใช้ BranchGroup = fallback
+- ถ้า branch เป็นทางเลือกปกติ ให้ใช้ BranchGroup = option
+- ถ้า branch เป็นทางแก้ error ให้ใช้ BranchGroup = error
+
+### C. Node Notes
+
+Note Format:
+
+Note-ID:
+Full Name:
+Principle:
+Method:
+Parameter:
+Constraint:
+Condition:
+Missing:
+Need Confirm:
+Prompt Readiness:
+Bubble Readiness:
+
+Rule:
+- Note ต้องผูกกับ NodeID
+- รายละเอียดที่ทำให้ bubble ยาวต้องไปอยู่ใน Note
+- Bubble แสดงชื่อสั้น
+- Note เก็บความหมายเต็ม
+
+
+## 5. Rules / Constraints
+
+### Required Output Format Rule
+
+File name:
+FDoc-ProjectName.txt
+
+Recommended folder:
+AI Projects\PrJxx-ProjectName\
+
+Recommended project folder structure:
+PrJxx-ProjectName
+PrJxx-ProjectName.txt
+SDoc-ProjectName.txt
+FDoc-ProjectName.txt
+PDoc-ProjectName.txt
+BubbleSMMX-ProjectName.smmx
+
+Flow Document structure:
+
+1. Header
+   - Context
+   - Purpose
+   - Scope
+   - Final Result
+
+2. System Components
+   - Main Topic
+   - Workflow-active Components
+   - Process Results
+   - Final Result
+   - Branch components / branch results if any
+
+3. Relational Logic
+   - IF / THEN causal logic
+   - Component to Process Result mapping
+   - Process Result to next Component mapping
+
+4. Operations Workflow
+   - Human-readable Flow Chain
+   - Branch workflow if any
+   - Node Link Structure
+   - Node Notes
+
+5. Constraints
+   - Global constraints
+   - Component-level constraints
+   - Prompt / Bubble readiness constraints
+
+6. Gap / Prompt Readiness
+   - Confirmed
+   - Inferred
+   - Missing
+   - Need Confirm
+   - Ready / Not Ready for Prompt Document
+   - Ready / Not Ready for BubbleSMMX
+
+### Constraints / Failure Conditions
+
+- Do not create Flow Document as a category map.
+- Do not use Header / Purpose / Components / Rules as workflow bubbles.
+- Do not skip Process Result.
+- Do not put Method into main workflow unless explicitly needed.
+- Do not put Constraints into main workflow unless they are active gates.
+- Do not create branch from the wrong source node.
+- Do not force workflow if source document has no real process.
+- Do not invent missing workflow details without marking Inferred.
+- Do not remove important details from Semantic Document.
+- Do not include Bubble Chart style, color, or SMMX layout rules here.
+- Bubble formatting belongs to BubbleSMMX Skill, not Flow Document Skill.
+- Do not make Node Link Structure replace Human-readable Flow Chain.
+- Do not create Node Link Structure without NodeID.
+- Do not create branch without BranchGroup.
+- Do not create branch without condition in Note.
+- Do not allow Node Link Structure to conflict with Flow Chain.
+
+### Output / Storage Decision
+
+Default output:
+FDoc-ProjectName.txt
+
+Use:
+- Input for BubbleSMMX Skill
+- Input for Prompt Document Skill
+- Workflow-ready intermediate document
+- Human-readable project flow reference
+- Machine-readable workflow structure for Tool
+
+Do not use this document to store:
+- SMMX color rules
+- SimpleMind XML details
+- Bubble layout implementation
+- Full coding prompt details unless user asks to extend into Prompt Document
+
+### Example
+
+Input Semantic Result:
+AI ต้องค้น Tag Index เพื่อหา source file แล้วทำ Data Extraction
+ให้ได้ข้อมูลพร้อมใช้งาน
+
+Flow Document Output:
+
+Header:
+
+Context:
+ระบบค้นข้อมูลจาก AI-TagIndex เพื่อเปิด source จริงและทำ Data Extraction
+
+Final Result:
+AI ได้ข้อมูลพร้อมใช้งานจาก source file ที่ถูกต้อง
+
+System Components:
+
+1. AI
+   - Principle: เลือก resource ที่เกี่ยวข้องกับงาน
+   - Method: ใช้ tag หรือ keyword จากคำสั่งผู้ใช้
+
+2. Tag Search Tool
+   - Principle: ค้นหา filename และ location จาก AI-TagIndex
+   - Method: filter tag แล้วส่งเฉพาะรายการที่ match
+
+3. Source File
+   - Principle: เป็น source of truth
+   - Method: เปิดไฟล์จริงจาก location ที่ค้นพบ
+
+4. Data Extraction Skill
+   - Principle: สกัดข้อมูลให้เป็น structured reusable data
+   - Method: ใช้มาตรฐาน SKR00
+
+Operations Workflow:
+
+A. Human-readable Flow Chain
+
+AI
+(note: identify required source)
+=> Search Requirement
+=> Tag Search Tool
+(note: search AI-TagIndex)
+=> Filename and Location
+=> Source File
+(note: source of truth)
+=> Data Extraction Skill
+(note: SKR00 extraction)
+=> Ready-to-use Extracted Data
+
+B. Node Link Structure
+
+N01 | Component | AI | N02 | main | Note-N01
+N02 | ProcessResult | Search Requirement | N03 | main | Note-N02
+N03 | Component | Tag Search Tool | N04 | main | Note-N03
+N04 | ProcessResult | Filename and Location | N05 | main | Note-N04
+N05 | Component | Source File | N06 | main | Note-N05
+N06 | Component | Data Extraction Skill | N07 | main | Note-N06
+N07 | FinalResult | Ready-to-use Data | END | main | Note-N07
+
+C. Node Notes
+
+Note-N01:
+Full Name: AI resource selection process
+Principle: เลือก resource ที่เกี่ยวข้องกับงาน
+Method: ใช้ tag หรือ keyword จากคำสั่งผู้ใช้
+
+Note-N03:
+Full Name: Tag Search Tool
+Principle: ค้นหา filename และ location จาก AI-TagIndex
+Method: filter tag แล้วส่งเฉพาะรายการที่ match
+
+Note-N05:
+Full Name: Source File
+Principle: เป็น source of truth
+Method: เปิดไฟล์จริงจาก location ที่ค้นพบ
+
+Note-N06:
+Full Name: Data Extraction Skill
+Principle: สกัดข้อมูลให้เป็น structured reusable data
+Method: ใช้มาตรฐาน SKR00
+
+Gap / Prompt Readiness:
+
+Confirmed:
+- มี Tag Index
+- มี source file
+- มี Data Extraction Skill
+- มี Node Link Structure สำหรับ BubbleSMMX Tool
+
+Ready for Prompt Document:
+Yes, if output format and target task are defined
+
+Ready for BubbleSMMX:
+Yes, if every node has NodeID, NodeType, NodeName, NextNodeID,
+BranchGroup and NoteRef
+
+
+## 6. Tags
+
+Tags:
+#FlowDocumentSkill #SemanticDocToFlowDoc #WorkflowPreparation
+#FinalResultBackwardMapping #ProcessResultChain #ComponentPrincipleMethod
+#PromptDocumentPreparation #BubbleChartPreparation #NodeLinkStructure
+#WorkflowReadyDocument
+
+End.

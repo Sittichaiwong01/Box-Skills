@@ -1,14 +1,11 @@
-# Box-Skills
+# Box-Skill
 
 Cloud manual/reference library.
 
-_Updated: 2026-06-23 12:57:32_
-
-## PDF Files
-
-- [Dell-u2414h-user guide.pdf](Dell-u2414h-user%20guide.pdf) (2.20 MB)
-- [SkyX7Cm430_UserManual.pdf](SkyX7Cm430_UserManual.pdf) (6.98 MB)
+_Updated: 2026-06-23 13:07:14_
 
 ## Text Files
 
-- [README.md](README.md) (293 B)
+- [README.md](README.md) (294 B)
+- [SkR00-DataExtractionDoc.txt](SkR00-DataExtractionDoc.txt) (11.83 KB)
+- [SkR01-FlowDocument.txt](SkR01-FlowDocument.txt) (17.25 KB)

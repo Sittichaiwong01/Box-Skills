@@ -1,0 +1,567 @@
+# AiR00 / SkR00 | DataExtractionDoc
+
+Data Type:
+AI Operation Rule / AI Skill Rule / Semantic Data Extraction Standard
+
+Local Codes:
+- AiR00-DataExtraction
+- SkR00-DataExtraction
+
+
+## 1. Header
+
+### Context
+
+Data Extraction is the core AI skill for converting Raw Doc into compact,
+structured, reusable semantic data.
+
+Raw Doc may include:
+- user chat
+- document text
+- CMD report
+- troubleshooting log
+- workflow note
+- project note
+- rule draft
+- manual
+- file list
+- index data
+- screenshot-derived text only when verified by report or user confirmation
+- confirmed chat conclusion after user and AI reach an agreed result
+
+### Status
+
+Core Skill / Highest Priority / Source-of-truth skill document.
+
+### Environment
+
+Default local storage:
+- AiR file:
+  Desktop\AI House\AI Operation Rules\AiR00-DataExtraction.txt
+- SkR file:
+  Desktop\AI House\AI Skill Rules\SkR00-DataExtraction.txt
+
+### Main Component
+
+- Raw Doc
+- Extracted Data
+- Header / Context
+- Components
+- Logic
+- Workflow
+- Rules / Constraints
+- Tags
+
+### Principle
+
+Keep core meaning, important details, evidence, and logic complete, but
+organize it into compact and reusable structure.
+
+Extraction is not summarization.
+
+Extraction is for reuse accuracy.
+
+Summarization is for quick understanding.
+
+Report is for evidence, delivery, or completed task record.
+
+### Final Result
+
+Extracted Data that allows AI or user to reuse the original information
+accurately without losing important details.
+
+
+## 2. Components
+
+### Raw Doc
+
+Original source material. It can be a full document, chat text, report,
+file list, manual, workflow, project note, rule draft, knowledge record, or
+confirmed chat conclusion.
+
+### Extracted Data
+
+Structured information extracted from Raw Doc.
+
+It must preserve:
+- meaning
+- decisions
+- evidence
+- constraints
+- reusable logic
+- future-use details
+
+### Header / Context
+
+Must contain:
+- topic
+- context
+- status
+- environment
+- purpose
+- scope
+- main component
+- principle
+- final result
+
+### Components
+
+Entities that have a role in the data:
+- system
+- machine
+- person
+- file
+- folder
+- tool
+- module
+- device
+- command
+- process
+- concept
+- rule
+- project
+- product
+- index
+- parameter owner
+
+### Parameters
+
+Values or properties that belong to a component:
+- path
+- filename
+- code
+- version
+- setting
+- threshold
+- condition
+- option
+- date
+- status
+- environment detail
+
+Rule:
+Parameters must be attached under their owner component.
+
+Do not let parameters float as unrelated headings unless the document itself
+is parameter-heavy.
+
+### Logic
+
+Relationships among components:
+- IF / THEN
+- dependency
+- cause-effect
+- mapping
+- route
+- condition
+- decision logic
+- source-to-output relation
+
+### Workflow
+
+Ordered process steps only when the source data contains a real process.
+
+If the document has no actual process, do not force a workflow.
+
+### Rules / Constraints
+
+Rules and limits that affect future use:
+- extraction completeness
+- source and evidence separation
+- exact preservation
+- data status
+- document output format
+- document tags
+- tag selection
+
+### Tags
+
+Semantic retrieval tags created by AI during extraction.
+
+Tags are part of the extracted document format.
+
+Tags are not the same as a full TagIndex document.
+
+The extracted document should contain 10 important tags that describe the
+semantic retrieval value of the document.
+
+
+## 3. Logic
+
+### Extraction vs Summarize vs Report
+
+- Extraction = preserve reusable structured data.
+- Summarize = compress for quick user understanding.
+- Report = record proof, action result, or delivery state.
+
+This section is a boundary rule.
+
+It does not define how to summarize.
+
+It prevents AI from replacing extraction with summarization.
+
+### Standard Routes
+
+semantic extraction => semantic summarize
+
+semantic extraction => Workflow document
+
+Workflow document => Bubble document / ProjectFlowBubble
+
+### Source Logic
+
+A full extraction must come from a real source.
+
+Valid source examples:
+- real local file
+- user-provided text
+- verified report
+- uploaded file
+- explicit user-confirmed content
+- confirmed chat conclusion
+
+Do not create a full standard document from vague memory, partial recall, or
+reconstructed assumptions.
+
+If no source exists, say:
+
+Source of truth not available. Only memory summary exists.
+
+### Exact Preservation Logic
+
+Exact details matter when they affect reuse, verification, file access, or
+future automation.
+
+Must preserve exact:
+- path
+- filename
+- code prefix
+- report line
+- error message
+- command
+- version
+- date/time
+- index entry
+- spacing when it affects filename or code
+
+If filename spacing is ambiguous, scan the real file list or use report text.
+
+Do not guess.
+
+### Data Status Logic
+
+Every important extracted fact should be treated as one of:
+- Confirmed = directly supported by source or user confirmation
+- Inferred = logically derived and clearly marked
+- Missing = not available
+- Need Confirm = user must decide or confirm
+
+Never guess silently.
+
+### Tag Creation Logic
+
+SkR00 creates semantic document Tags during extraction.
+
+SkR00 does not create a full TagIndex record.
+
+The document Tags section exists so tools can later rebuild or search an
+index without requiring AI to reprocess the meaning again.
+
+
+## 4. Workflow
+
+1. Read Raw Doc.
+
+2. Identify topic, context, purpose, scope, status, environment, main
+   component, principle, and final result.
+
+3. Extract components.
+
+4. Attach parameters under correct components.
+
+5. Extract logic:
+   - relationships
+   - dependencies
+   - IF / THEN
+   - route
+   - decisions
+
+6. Extract workflow only if the source contains a real process.
+
+7. Extract rules, constraints, risks, missing data, and need-confirm items.
+
+8. Preserve exact source details when they affect reuse or verification.
+
+9. Separate source data, user-confirmed conclusion, and AI inference.
+
+10. Assign Data Status:
+    - Confirmed
+    - Inferred
+    - Missing
+    - Need Confirm
+
+11. Create document Tags:
+    - select 10 important semantic retrieval tags
+    - use document meaning, not frequency count
+    - preserve confirmed existing tags when appropriate
+    - create new tags automatically when none exist
+
+12. Compact wording without deleting important details.
+
+13. Output the extracted document in the standard format.
+
+
+## 5. Rules / Constraints
+
+### 5.1 Core Extraction Rule
+
+Data Extraction must preserve reusable meaning.
+
+Do not summarize by cutting important details.
+
+Do not create too many fixed headings unless needed.
+
+Do not separate parameters as major headings unless the document is
+parameter-heavy.
+
+Do not force workflow structure onto non-workflow documents.
+
+Do not let parameters float without an owner component.
+
+Do not duplicate the same detail across multiple sections.
+
+Do not invent missing details.
+
+Keep body compact but complete.
+
+Extraction is for reuse accuracy, not only easy reading.
+
+Report is optional unless the task needs proof, delivery, or completion
+record.
+
+For CMD reports, extract BEFORE / ACTION / AFTER / Status exactly.
+
+### 5.2 Source & Evidence Rule
+
+Extraction must identify what the source is.
+
+The source may be:
+- uploaded document
+- local file
+- CMD report
+- user-provided text
+- confirmed chat conclusion
+
+Evidence means the source detail that supports the extracted fact.
+
+Evidence may include:
+- exact report line
+- error message
+- path
+- filename
+- command
+- date/time
+- before/after state
+- observed result
+- user-confirmed statement
+
+For chat-based extraction, user confirmation and agreed final conclusion
+count as evidence.
+
+AI analysis must be separated from source data.
+
+Do not mix raw source, user-confirmed conclusion, and AI inference silently.
+
+Do not claim full-document status unless there is a real source file or exact
+user-provided content.
+
+If reconstructing from memory, label it as reconstruction and not source of
+truth.
+
+### 5.3 Exact Preservation Rule
+
+Exact Preservation means important source details must be kept exactly as
+they appear.
+
+This is not only file naming.
+
+It applies to:
+- path
+- filename
+- folder name
+- command
+- error code
+- version
+- code prefix
+- date/time
+- report line
+- index entry
+- spacing when spacing changes meaning
+
+Examples:
+- MEM00  AI Memory System Standard.txt
+- WHEA-Logger ID 17
+- Windows 10 Pro 22H2 Build 19045.6466
+- SkR00, AiR00, PrJ12, Tool03
+
+If exact details are changed, future work may fail because files cannot be
+found, commands may run incorrectly, or references may point to the wrong
+document.
+
+If exact spelling, spacing, or path is uncertain, mark it Need Confirm
+instead of guessing.
+
+### 5.4 Data Status Rule
+
+Every important extracted fact must have a clear status when support is not
+obvious.
+
+Allowed data status:
+- Confirmed
+- Inferred
+- Missing
+- Need Confirm
+
+Confirmed means directly supported by source or user confirmation.
+
+Inferred means AI derived it from the source and marks it clearly.
+
+Missing means the required information is not available.
+
+Need Confirm means the user must decide or confirm before the fact is used as
+final.
+
+Never present inferred or uncertain data as confirmed.
+
+### 5.5 Document Output Format Rule
+
+A standard Data Extraction output must follow this format unless the user
+orders a special format.
+
+1. Header
+   - context
+   - status
+   - environment
+   - main component
+   - principle
+   - final result
+
+2. Components
+   - entities
+   - parameter owners
+   - important parameters under correct owners
+
+3. Logic
+   - relationships
+   - conditions
+   - dependencies
+   - route
+   - decision logic
+
+4. Workflow
+   - only if real process exists
+
+5. Rules / Constraints
+   - core extraction rule
+   - source and evidence rule
+   - exact preservation rule
+   - data status rule
+   - document output format rule
+   - document tags rule
+   - tag selection rule
+
+Output Format is a rule.
+
+It controls how the extracted document must be written.
+
+It should not become a separate operation workflow or tool rule.
+
+### 5.6 Document Tags Rule
+
+Every extracted standard document should include a Tags section.
+
+The Tags section is created by the Data Extraction skill.
+
+The Tags section must contain 10 important semantic retrieval tags when the
+document has enough meaningful content.
+
+Tags must be selected from document meaning, not from simple keyword
+frequency.
+
+Tags must be useful for future search and retrieval.
+
+Tags must not be generic unless the generic term is a real retrieval route.
+
+Bad generic tags include:
+- #done
+- #file
+- #text
+- #data
+- #misc
+- #note
+
+Good tags identify:
+- meaning
+- system
+- workflow
+- role
+- route
+- reusable function
+
+If the Raw Doc already contains confirmed tags, preserve them unless the
+user asks for re-tagging.
+
+If the Raw Doc has no tags, SkR00 must create 10 semantic tags automatically
+from the extracted meaning.
+
+If the document has too little content to create 10 meaningful tags, create
+as many meaningful tags as possible and mark the remaining tag status as
+Need Confirm.
+
+The Tags section inside the document is not the same as a full TagIndex
+file.
+
+### 5.7 Tag Selection Rule
+
+Tags must be selected from the semantic structure of the extracted document.
+
+Preferred source order:
+
+1. Final Result
+   - exactly one strong tag when possible
+
+2. Main Principle
+   - exactly one strong tag when possible
+
+3. Active Components
+   - systems, tools, modules, machines, actors, or resources that make the
+     workflow possible
+
+4. Process Results
+   - intermediate outputs that move the workflow forward
+
+5. Workflow Route / Reusable Concept
+   - route, method, or reusable idea that future search should find
+
+Tags should follow this pattern when possible:
+
+Component => Principle => Process Result => Component => Principle =>
+Final Result
+
+Constraint / Rule tags may be used only when the constraint directly
+controls the workflow.
+
+Do not create vague related-expansion tags.
+
+Any extra tag must come from a real component, process result, tool,
+machine, system, method, or final result in the extraction.
+
+
+## 6. Tags
+
+SkR00 suggested tags:
+
+#SkR00 #DataExtraction #semantic #skill #extraction
+#workflow #summarize #bubble #aihouse #BOBOman
+
+End.
