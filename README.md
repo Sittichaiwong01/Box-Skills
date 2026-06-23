@@ -1,8 +1,8 @@
-# Box-Skill
+# Box-Skills
 
 Cloud manual/reference library.
 
-_Updated: 2026-06-23 12:55:47_
+_Updated: 2026-06-23 12:57:32_
 
 ## PDF Files
 
@@ -11,4 +11,4 @@ _Updated: 2026-06-23 12:55:47_
 
 ## Text Files
 
-- [README.md](README.md) (289 B)
+- [README.md](README.md) (293 B)
